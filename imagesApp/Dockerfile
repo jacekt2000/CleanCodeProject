@@ -1,13 +1,14 @@
-FROM python:3.8-slim-buster
+FROM python:3.10.2-slim-bullseye
 
-WORKDIR /app
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+WORKDIR /app/ImagesApp
 
-# kopiuje biezacy folder do biezacego
-COPY . .
+COPY requirements.txt /app/ImagesApp/
 
-# takie komendy ma uruchmoic w terminalu
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000"]
- 
+RUN pip install -r requirements.txt 
+
+COPY . /app/ImagesApp/
+
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
