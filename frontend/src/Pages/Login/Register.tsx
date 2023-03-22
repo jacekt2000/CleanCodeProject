@@ -28,7 +28,8 @@ const RegistrationForm = () => {
 
   return (
     <div className='container'>
-      <div className='logo'><img src="" alt="" />LOGO</div>
+       <div className='logo'><a href="./login"><img style={{ height:180}} src={require('../../Assets/Images/logo3.png')} alt="" /></a></div> 
+
       <div className='register'>
         <form>
           <label id='login' className='registerForm'>
@@ -47,14 +48,14 @@ const RegistrationForm = () => {
             <input type="password" name="password" className='registerForm' placeholder='password'/>
           </label><br></br>
           <label id='repPassword' className='registerForm'>
-            <input type="password" name="repeatPassword" className='registerForm'  placeholder='Repeat Password'/>
+            <input type="password" name="repeatPassword" className='registerForm'  placeholder='repeat password'/>
           </label><br></br>
           <label className='registerForm' >
             <input type="checkbox" name="policies"/>
-            I accept the <a href="">Terms of Service and Privacy Policy</a>
+            I accept the <a href="" className='terms'>Terms of Service</a>
           </label><br></br>
           <button type="submit" className='registerForm'>Submit</button>
-          <a href="" className="signIn">Sign in</a> 
+          <a href="./login" className="signIn">Sign in</a> 
         </form>
       </div>
       
