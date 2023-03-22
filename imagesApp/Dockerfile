@@ -5,10 +5,10 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR /app/ImagesApp
 
-COPY requirements.txt /app/ImagesApp/
+COPY requirements.txt .
 
 RUN pip install -r requirements.txt 
 
-COPY . /app/ImagesApp/
+COPY . .
 
 CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
