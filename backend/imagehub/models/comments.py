@@ -1,6 +1,6 @@
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
-from users.models import Account
+from backend.imagehub.user import Account
 
 
 class Post(models.Model):
