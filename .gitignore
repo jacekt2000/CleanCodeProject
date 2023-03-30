@@ -15,7 +15,7 @@ downloads/
 eggs/
 .eggs/
 lib/
-lib64/
+lip
 parts/
 sdist/
 var/
@@ -127,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.idea/
+data/
