@@ -1,0 +1,19 @@
+w podkatalogu frontend (w terminalu) uruchom polecenie: "npm install" (jeżeli nie masz jeszcze node modules)
+
+w podkatalogu backend (w terminaul) stwóż środowisko wirtualne poleceniami: py -m venv venv (jeżeli nie masz venva)
+i pobierz na nim biblioteki które używamy polecniem: pip install -r requirements.txt (tylko środowisko virtualne musi być aktywowane)
+
+jeżeli masz stary katalog "data" utwożony nie przez dockera usun go
+    
+(tylko za pierwszym razem) uruchom aplikacje docker destop 
+i usun z niego kontenery które masz 
+
+(docker destop musi być uruchomiony) w terminalu przejdż do katalogu głównego "CleanCodeProject" 
+i wpisz "docker-compose up" odczekaj chwile powinien w katalogu głównym pojawić się plik "data"
+jest to nasza baza danych
+
+UWAGA! po pierwszym uruchomieniu "docker-compose up" powinien pojawić się błąd połączenia z bazą,
+dlatego gdy trzy obrazy zostaną już utworzone przerwij uruchamianie tych obrazów:  "CTRL + C"
+
+wpisz ponownie: docker-compose up
+
