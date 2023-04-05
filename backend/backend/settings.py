@@ -211,3 +211,5 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'users.Account'
+
+CORS_ORIGIN_ALLOW_ALL = True

@@ -7,8 +7,6 @@ import  '../../Assets/Styles/register.css';
 type FormValues = {
   login: string;
   email: string;
-  name: string;
-  surname: string;
   password: string;
   repeatPassword: string;
   policies: boolean;
@@ -20,8 +18,6 @@ const LoginForm = () => {
   const [formValues] = useState<FormValues>({
     login: '',
     email: '',
-    name: '',
-    surname: '',
     password: '',
     repeatPassword: '',
     policies: false
