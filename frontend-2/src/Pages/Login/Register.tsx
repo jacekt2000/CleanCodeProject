@@ -28,7 +28,7 @@ const RegistrationForm = () => {
 
   return (
     <div className='container'>
-       <div className='logo'><a href="./login"><img style={{ height:180}} src={require('../../Assets/Images/logo3.png')} alt="" /></a></div> 
+       {/* <div className='logo'><a href="./login"><img style={{ height:180}} src={require('../../Assets/Images/logo3.png')} alt="" /></a></div>  */}
 
       <div className='register'>
         <form>
@@ -55,7 +55,7 @@ const RegistrationForm = () => {
             I accept the <a href="" className='terms'>Terms of Service</a>
           </label><br></br>
           <button type="submit" className='registerForm'>Submit</button>
-          <a href="./login" className="signIn">Sign in</a> 
+          <a href="./login" className="signIn">Sign inasd</a> 
         </form>
       </div>
       
