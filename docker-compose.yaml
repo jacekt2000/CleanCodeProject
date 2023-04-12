@@ -1,21 +1,20 @@
 version: '3.9'
 
 services:
-  # postgres_db:
-  #   image: postgres:14-alpine
-  #   ports:
-  #     - '5432:5432'
-
-  #   environment:
-  #     POSTGRES_PASSWORD: postgres
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_DB: postgres
-
-  #   volumes:
-  #     - ./data/postgres_db:/var/lib/postgresql/data/
+  postgres_db:
+    container_name: db_container
+    image: postgres:14-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./data/postgres_db:/var/lib/postgresql/data/
 
   frontend:
-    container_name: imgur_frontend
+    container_name: frontend_container
     build:
       dockerfile: Dockerfile
       context: ./frontend
@@ -26,43 +25,27 @@ services:
       - WATCHPACK_POLLING=true
     ports:
       - "3000:3000"
-    # depends_on:
-    #   - backend
+    depends_on:
+      - backend
     command: npm start 0.0.0.0:3000
     restart: always
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
 
-  #   ports:
-  #     - '3000:3000'
-
-  #   volumes:
-  #     - ./frontend:/app/frontend
-
-    # depends_on:
-    #   - backend
-
-  # backend: 
-  #   build: 
-  #     context: ./backend
-  #     dockerfile: Dockerfile
-    
-  #   command: sh -c "python manage.py makemigrations &&
-  #            python manage.py migrate &&
-  #            python manage.py runserver 0.0.0.0:8000"
-    
-  #   environment:
-  #     POSTGRES_PASSWORD: postgres
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_DB: postgres
-
-  #   ports:
-  #     - '8000:8000'
-
-  #   volumes:
-  #     - ./backend:/app/backend
-
-  #   depends_on:
-  #     - postgres_db
+  backend:
+    container_name: backend_container 
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    command: sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      - postgres_db
