@@ -1,29 +1,60 @@
 import React, { useState } from 'react';
 import  '../../Assets/Styles/register.css';
 
-type FormValues = {
-  login: string;
+interface RegisterData {
+  username: string;
   email: string;
-  name: string;
-  surname: string;
   password: string;
-  repeatPassword: string;
-  policies: boolean;
+  rep_password: string;
+//  policies: boolean;
 //   dateOfBirth: Date;
 };
 
 
-const RegistrationForm = () => {
-  const [formValues] = useState<FormValues>({
-    login: '',
+const RegisterForm: React.FC = () => {
+  const [formData, setFormData] = useState<RegisterData>({
+    username: '',
     email: '',
-    name: '',
-    surname: '',
     password: '',
-    repeatPassword: '',
-    policies: false
-    
+    rep_password: ''
+ //   policies: false,
   });
+  
+  
+  
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/registration/user/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setSuccess(data.success);
+        setError(null);
+        console.log("git")
+      } else {
+        setError(data.error);
+        setSuccess(null);
+        console.log("nie git");
+      }
+    } catch (error) {
+      console.error(error);
+      setError('An error occurred while submitting the form.');
+      setSuccess(null);
+    }
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  };
+  
 
 
   return (
@@ -31,24 +62,18 @@ const RegistrationForm = () => {
        {/* <div className='logo'><a href="./login"><img style={{ height:180}} src={require('../../Assets/Images/logo3.png')} alt="" /></a></div>  */}
 
       <div className='register'>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label id='login' className='registerForm'>
-            <input type="text" name="login" className='registerForm' placeholder='login' />
+            <input type="text" name="username" className='registerForm' placeholder='login' value={formData.username} onChange={handleChange} />
           </label><br></br>
           <label id='email' className='registerForm'>
-            <input type="email" name="email" className='registerForm' placeholder='email'/>
-          </label><br></br>
-          <label id='name' className='registerForm'>
-            <input type="text" name="name" className='registerForm' placeholder='name'/>
-          </label><br></br>
-          <label id='surname' className='registerForm'>
-            <input type="text" name="surname" className='registerForm' placeholder='surname'/>
+            <input type="email" name="email" className='registerForm' placeholder='email' value={formData.email} onChange={handleChange}/>
           </label><br></br>
           <label id='password' className='registerForm'>
-            <input type="password" name="password" className='registerForm' placeholder='password'/>
+            <input type="password" name="password" className='registerForm' placeholder='password' value={formData.password} onChange={handleChange}/>
           </label><br></br>
           <label id='repPassword' className='registerForm'>
-            <input type="password" name="repeatPassword" className='registerForm'  placeholder='repeat password'/>
+            <input type="password" name="rep_password" className='registerForm'  placeholder='repeat password' value={formData.rep_password} onChange={handleChange}/>
           </label><br></br>
           <label className='registerForm' >
             <input type="checkbox" name="policies"/>
@@ -63,4 +88,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default RegisterForm;
