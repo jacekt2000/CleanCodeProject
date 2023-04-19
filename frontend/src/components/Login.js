@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function Login() {
   const [accessToken, setAccessToken] = useState('');
-  const [username, setUsername] = useState('');
+  const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   async function handleLogin(e) {
@@ -13,7 +13,7 @@ function Login() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ email, password })
       });
       const data = await response.json();
       if (!response.ok) {
@@ -26,17 +26,14 @@ function Login() {
   }
 
   return (
-    <>
-      {accessToken ? (
-        <p>You are logged in!</p>
-      ) : (
+    
         <form onSubmit={handleLogin}>
           <div>
-            <label htmlFor="email">Username:</label>
+            <label htmlFor= "email">Username:</label>
             <input
               type="text"
               id="email"
-              value={username}
+              value={email}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
@@ -49,11 +46,11 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit">Log in</button>
         </form>
-      )}
-    </>
-  );
+      )
+    
+  
 }
 
 export default Login;
