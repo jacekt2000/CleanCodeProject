@@ -19,7 +19,7 @@ class AccountManager(BaseUserManager):
             email=self.normalize_email(email),
             password=password
         )
-        user.is_admin = True
+        #user.is_admin = True
         user.is_active = True
         user.is_superuser = True
         user.save(using=self._db)
