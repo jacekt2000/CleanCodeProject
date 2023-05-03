@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import { Link } from 'react-router-dom';
 import '../style/register.css';
-
+import Validation from './validation';
 
 const Register = () => {
   // const imageLogo = <img style={{ height:180}} src={require('../images/logo3.png')} alt="" />
@@ -10,17 +10,19 @@ const Register = () => {
     username: "",
     email: "",
     password: "",
-    rep_password: ""
+    rep_password: "",
  //   policies: false,
   });
   
   
   
+  const [errors, setErrors] = useState({});
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event ) => {
     event.preventDefault();
+    setErrors(Validation(formData));
     try {
       const response = await fetch('http://127.0.0.1:8000/api/registration/user/', {
         method: 'POST',
@@ -59,19 +61,27 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
         <label id='login' className='registerForm'>
             <input type="text" name="username" className='registerForm' placeholder='login' value={formData.username} onChange={handleChange} />
-          </label><br></br>
+          </label>
+          {errors.username && <p>{errors.username}</p>}
+          {console.log(errors)}
+          <br></br>
 
           <label id='email' className='registerForm'>
             <input type="email" name="email" className='registerForm' placeholder='email' value={formData.email} onChange={handleChange}/>
-          </label><br></br>
+          </label>
+          <br></br>
 
           <label id='password' className='registerForm'>
             <input type="password" name="password" className='registerForm' placeholder='password' value={formData.password} onChange={handleChange}/>
-          </label><br></br>
+          </label>
+          {errors.password && <p>{errors.password}</p>}
+          <br></br>
 
           <label id='repPassword' className='registerForm'>
             <input type="password" name="rep_password" className='registerForm'  placeholder='repeat password' value={formData.rep_password} onChange={handleChange}/>
-          </label><br></br>
+          </label>
+          {errors.rep_password && <p>{errors.rep_password}</p>}
+          <br></br>
 
           <label className='registerForm' >
             <input type="checkbox" name="policies"/>
@@ -79,7 +89,7 @@ const Register = () => {
           </label><br></br>
 
           <button type="submit" className='registerForm'>Submit</button>
-          <Link to="/login" className="signIn">Sign in</Link>
+          {/* <Link to="/login" className="signIn">Sign in</Link> */}
           <label className='registerForm' />
         </form>
       </div>
