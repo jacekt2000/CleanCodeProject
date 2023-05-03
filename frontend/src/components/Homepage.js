@@ -3,6 +3,8 @@ import Header from './Header';
 import HeaderSmall from './HeaderSmall';
 import { Link } from 'react-router-dom';
 import '../style/register.css';
+import ImageList from './ImageList';
+
 
 const Homepage = () => {
 
@@ -87,20 +89,14 @@ const Homepage = () => {
                             Wellman
                         </div>
 
-                        <div className='category'>
-                            Memuchy 
-                        </div>
-
-                        <div className='category'>
-                            Memuchy 
-                        </div>
 
                     </div>
                 </div>
 
                 <div className='photosSection'>
-
-                    <div className='photo'>
+                <ImageList/>
+                    {/* <div className='photo'>
+                        
                         <div className='image'>
                         <img  src={require('../images/testowe/2.gif')} alt="" />
                         </div>
@@ -198,7 +194,7 @@ const Homepage = () => {
                         <div className='photoDescription'>
                         opis zdjęcia<br/>like i komentarze
                         </div>
-                    </div>
+                    </div> */}
                     
 
                 </div>
@@ -207,3 +203,5 @@ const Homepage = () => {
     )
 }
 export default Homepage
+
+
