@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import useToken from "./components/useToken";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function setToken(userToken) {
   sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -18,9 +19,9 @@ function getToken() {
 const App = () => {
   const token = getToken();
   // const {token, setToken} = useToken();
-  // if(!JSON.stringify(token)) {
-  //   return <><p>hallo</p></>
-  // }
+  if(!token) {
+    return <><p>hallo</p></>
+  }
 
 
   return (
@@ -29,9 +30,10 @@ const App = () => {
         <p>{sessionStorage.getItem('token')}</p>
         <Router>
           <Routes>
-            <Route path="/" element={<Login setToken={setToken} />} />
+            <Route path="/" element={<Dashboard/>} />
             <Route path="/register" element={<Register />} />
             <Route path="/password" element={<RecoverPassword />} />
+            <Route path="/login" element={<Login setToken={setToken} />} />
           </Routes>
         </Router>
       </div>
