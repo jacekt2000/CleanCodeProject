@@ -4,7 +4,6 @@ from users.models import Account
 
 
 class Post(models.Model):
-    post_id = models.IntegerField(primary_key=True)
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     title = models.CharField(max_length=45)
     description = models.TextField()
@@ -12,25 +11,43 @@ class Post(models.Model):
     image = models.CharField(max_length=100)
     tags = ArrayField(models.CharField(max_length=15))
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
-    comment_id = models.IntegerField(primary_key=True)
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     comment_text = models.TextField()
     create_date = models.DateField()
-    parrent_comment = models.IntegerField()
+
+    def __str__(self):
+        return self.comment_text
 
 
-class Post_like(models.Model):
-    like_id = models.IntegerField(primary_key=True)
-    like_type = models.BooleanField()
+class Subcomment(models.Model):
+    parrent_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
+    comment_text = models.TextField()
+    create_date = models.DateField()
+    
+    def __str__(self):
+        return self.comment_text
+
+
+class PostLike(models.Model):
+    type = models.BooleanField()
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(self.type)
 
-class Comment_like(models.Model): # Klasy nazywamy dużymi literami np. CommnetLike
-    like_id = models.IntegerField(primary_key=True)
-    like_type = models.BooleanField()
-    user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
-    comment_id = models.ForeignKey(Comment, on_delete=models.CASCADE)
+
+# class CommentLike(models.Model): 
+#     like_type = models.BooleanField()
+#     user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
+#     comment_id = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    # def __str__(self):
+    #     return self.id
