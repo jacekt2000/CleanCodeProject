@@ -18,6 +18,12 @@ export default function Login({setToken}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // function loginValidation(credentials) {
+  //   if(!credentials.email || !credentials.password){
+  //     return false;
+  //   }else 
+  // }
+
   // po wcisnieciu submita uruchamia userLogin i ustawia token
   const handleSubmit = async event => {
     event.preventDefault();
