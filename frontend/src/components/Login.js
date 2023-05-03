@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import '../style/register.css'
 
-// zwraca promise z tokenem
+// zwraca promise z access oraz refresh tokenem
 async function userLogin(credentials) {
     return fetch('http://127.0.0.1:8000/api/token/', {
       method: 'POST',
@@ -21,11 +21,13 @@ export default function Login({setToken}) {
   // po wcisnieciu submita uruchamia userLogin i ustawia token
   const handleSubmit = async event => {
     event.preventDefault();
+
     const response = await userLogin({
       email, 
       password
     });
     const data = await response.json();
+    // pobieram access token z jsona jako objekt js
     const token = data.access;
     setToken(token);
   }
