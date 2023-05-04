@@ -14,10 +14,6 @@ const Homepage = () => {
         <div className='homepage'>
             <div className='header'>
                 <div className='navBar'>
-            
-            
-
-
                         <div className='logoSmall'>
                             <HeaderSmall/>
                         </div>
