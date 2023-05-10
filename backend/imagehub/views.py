@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from .serializers import PostSerializer
+from .serializers import TagSerializer, PostSerializer
 from rest_framework import viewsets
-from .models import Post
+from .models import Tag, Post
+
+
+class TagView(viewsets.ModelViewSet):
+    serializer_class = TagSerializer
+    queryset = Tag.objects.all()
 
 
 class PostView(viewsets.ModelViewSet):

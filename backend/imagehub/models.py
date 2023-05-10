@@ -3,13 +3,20 @@ from django.db import models
 from users.models import Account
 
 
+class Tag(models.Model):
+    tag = models.CharField(max_length=25, unique=True)
+
+    def __str__(self):
+        return self.tag
+
+
 class Post(models.Model):
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     title = models.CharField(max_length=45)
     description = models.TextField()
     create_date = models.DateField()
     image = models.CharField(max_length=100)
-    tags = ArrayField(models.CharField(max_length=15))
+    tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         return self.title
