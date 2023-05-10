@@ -27,7 +27,7 @@ const App = () => {
   return (
       <div className="App">
         <h1>Main page</h1>
-        <p>{sessionStorage.getItem('token')}</p>
+        {/* <p>{sessionStorage.getItem('token')}</p> */}
         <Router>
           <Routes>
             <Route path="/" element={<Dashboard/>} />

@@ -9,6 +9,7 @@ export default function useToken() {
 
     const [token, setToken] = useState(getToken());
 
+    // funckcja ustawia token w local storage i zarazem ustawia go jako stan komponentu
     const saveToken = userToken => {
         localStorage.setItem('token', JSON.stringify(userToken));
         setToken(userToken.token);
