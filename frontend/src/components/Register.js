@@ -89,7 +89,7 @@ const Register = () => {
           </label><br></br>
 
           <button type="submit" className='registerForm'>Submit</button>
-          <Link to="/login" className="signIn">Sign in</Link>
+          {/* <Link to="/login" className="signIn">Sign in</Link> */}
           <label className='registerForm' />
         </form>
       </div>

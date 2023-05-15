@@ -10,8 +10,10 @@ class AccountManager(BaseUserManager):
             last_name=last_name,
             **kwargs
         )
+        
         user.set_password(password)
         user.save(using=self._db)
+
         return user
 
     def create_superuser(self, email: str, password: str = None, **kwargs):
@@ -19,7 +21,8 @@ class AccountManager(BaseUserManager):
             email=self.normalize_email(email),
             password=password
         )
-        user.is_admin = True
+
+        #user.is_admin = True
         user.is_active = True
         user.is_superuser = True
         user.save(using=self._db)
