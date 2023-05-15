@@ -2,7 +2,7 @@ import Register from "./components/Register";
 import RecoverPassword from "./components/RecoverPassword";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login2 from "./components/Login2";
+import Login from "./components/Login";
 // import useToken from "./components/useToken";
 import Dashboard from "./components/Dashboard/Dashboard";
 
@@ -61,7 +61,7 @@ const App = () => {
           <Route path="/" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
           <Route path="/password" element={<RecoverPassword />} />
-          <Route path="/login" element={<Login2 />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </div>
