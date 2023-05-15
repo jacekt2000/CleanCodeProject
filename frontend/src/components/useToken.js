@@ -1,22 +1,22 @@
 import { useState } from 'react';
 
 export default function useToken() {
+    let pair = []
     const getToken = () => {
         const tokenString = localStorage.getItem('token');
         const userToken = JSON.parse(tokenString);
-        return userToken?.token
+        return userToken?.access
     };
 
     const [token, setToken] = useState(getToken());
 
     // funckcja ustawia token w local storage i zarazem ustawia go jako stan komponentu
-    const saveToken = userToken => {
+    function saveToken(userToken) {
         localStorage.setItem('token', JSON.stringify(userToken));
-        setToken(userToken.token);
+        setToken(userToken.access);
     };
 
-    return {
-        setToken: saveToken,
-        token
-    }
+
+    pair.push(token, saveToken);
+    return pair;
 }
