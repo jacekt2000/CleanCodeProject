@@ -15,7 +15,7 @@ function SetTokenToLocal({ token }) {
 }
 
 
-export default function Login2() {
+export default function Login() {
 
     const [response, setResponse] = useState("");
     const [credentials, setCredentials] = useState({
