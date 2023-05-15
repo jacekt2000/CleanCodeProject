@@ -42,6 +42,7 @@ export default function TitlebarBelowMasonryImageList() {
   return (
     <Box sx={{ width: size-20, height: 450, }}>
       <ImageList variant="masonry" cols={7} gap={8} >
+        
         {itemData.map((item) => (
           <ImageListItem key={item.img} >
             <img
