@@ -3,6 +3,9 @@ from django.db import models
 from users.models import Account
 
 
+def upload_to(instance, filename):
+    return 'images/{filename}'.format(filename=filename)
+
 class Tag(models.Model):
     tag = models.CharField(max_length=25, unique=True)
 
@@ -15,7 +18,7 @@ class Post(models.Model):
     title = models.CharField(max_length=45)
     description = models.TextField()
     create_date = models.DateField()
-    image = models.CharField(max_length=100)
+    image = models.ImageField(upload_to=upload_to, blank=True, null=True)
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
