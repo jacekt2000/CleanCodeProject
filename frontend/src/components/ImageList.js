@@ -6,13 +6,20 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
+const URL = "http://localhost:8000/api/posts/";
+
 function useWindowSize() {
+  const [itemData, setItemData] = useState("");
     // Initialize state with undefined width/height so server and client renders match
     // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
     const [windowSize, setWindowSize] = useState({
       width: undefined,
       height: undefined,
     });
+
+    // function fetchPosts() {
+    //   dat axios.get(URL, )
+    // }
   
     useEffect(() => {
       // Handler to call on window resize
