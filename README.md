@@ -10,9 +10,9 @@ Aplikacja
 	
 ## Technologies
 Project is created with:
-* Python (Django): 12.3
-* Java SCript (React): 2.33
-* PostgreSQL: 
+* Python (Django)
+* Java Script (React)
+* PostgreSQL
 * Docker
 	
 ## Setup
