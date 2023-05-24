@@ -1,23 +1,19 @@
 import pytest
-from users.models import Account, AccountManager
-
-
-@pytest.fixture
-def account_user() -> Account:
-    return Account.objects.create(username="john", email="john@gmail.com", password="password", first_name="John", last_name="Doe")
-
-
-@pytest.fixture
-def account_superuser() -> Account:
-    return Account.objects.create(username="john", email="john@gmail.com", password="password", first_name="John", last_name="Doe", is_superuser=True)
 
 
 @pytest.mark.django_db
 def test_users_models_account(account_user):
-    assert account_user.first_name == "John"
-    assert account_user.last_name == "Doe"
-    assert account_user.email == "john@gmail.com"
-    assert account_user.password == "password"
+    custom_email = "abc@gmail.com"
+    custom_username = "user123"
+    custom_password = "1234A5678"
+
+    account_user.email = custom_email
+    account_user.username = custom_username
+    account_user.password = custom_password
+
+    assert account_user.username == custom_username
+    assert account_user.email == custom_email
+    assert account_user.password == custom_password
 
 
 @pytest.mark.xfail

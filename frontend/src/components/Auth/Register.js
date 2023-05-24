@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../style/register.css';
 import Validation from '../validation';
 
+
 const Register = () => {
   // const imageLogo = <img style={{ height:180}} src={require('../images/logo3.png')} alt="" />
   const [formData, setFormData] = useState({
@@ -13,8 +14,17 @@ const Register = () => {
     rep_password: "",
     //   policies: false,
   });
+  
+  const validateEmail=(email)=>{
+    const EMAIL_REGEX=/^\S+@\S+\.\S+$/;
+    return EMAIL_REGEX.test(email);
+  };
 
-
+  const validatePassword=(password)=>{
+    const PWD_REGEX=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
+    return PWD_REGEX.test(password);
+  };
+  
 
   const [errors, setErrors] = useState({});
   const [error, setError] = useState(null);
@@ -43,6 +53,14 @@ const Register = () => {
       console.error(error);
       setError('An error occurred while submitting the form.');
       setSuccess(null);
+    }
+    const isEmailValid = validateEmail(formData.email);
+    const isPasswordValid=validatePassword(formData.password);
+    if(isEmailValid && isPasswordValid){
+      console.log("email i hasło są git")
+    }
+    else{
+      console.log("soemthing not banglaing")
     }
   };
 

@@ -6,6 +6,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
+
 const URL = "http://localhost:8000/api/posts/";
 
 function useWindowSize() {
@@ -20,6 +21,7 @@ function useWindowSize() {
     // function fetchPosts() {
     //   dat axios.get(URL, )
     // }
+
   
     useEffect(() => {
       // Handler to call on window resize
@@ -49,7 +51,7 @@ export default function TitlebarBelowMasonryImageList() {
   return (
     <Box sx={{ width: size-20, height: 450, }}>
       <ImageList variant="masonry" cols={7} gap={8} >
-        
+
         {itemData.map((item) => (
           <ImageListItem key={item.img} >
             <img
