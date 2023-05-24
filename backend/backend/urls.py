@@ -32,4 +32,6 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include(users_urls)),
     path('api/', include(imagehub_urls))
+    path('api/', include(app_urls)),
+    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

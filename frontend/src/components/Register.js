@@ -25,6 +25,7 @@ const Register = () => {
     return PWD_REGEX.test(password);
   };
   
+
   const [errors, setErrors] = useState({});
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -106,7 +107,7 @@ const Register = () => {
           </label><br></br>
 
           <button type="submit" className='registerForm'>Submit</button>
-          <Link to="/login" className="signIn">Sign in</Link>
+          {/* <Link to="/login" className="signIn">Sign in</Link> */}
           <label className='registerForm' />
         </form>
       </div>

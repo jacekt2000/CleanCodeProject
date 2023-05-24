@@ -4,6 +4,7 @@ import HeaderSmall from './HeaderSmall';
 import { Link } from 'react-router-dom';
 import '../style/register.css';
 import ImageList from './ImageList';
+
 import Tag from './Tag';
 
 
@@ -15,10 +16,6 @@ const Homepage = () => {
         <div className='homepage'>
             <div className='header'>
                 <div className='navBar'>
-            
-            
-
-
                         <div className='logoSmall'>
                             <HeaderSmall/>
                         </div>
@@ -31,6 +28,7 @@ const Homepage = () => {
                         </div>
                         <div className='buttomsNav'>
                             <div className='registrationButton'>
+
                                 <Link to="/Register" className='signUp'>Sign up</Link>
                             </div>
 
