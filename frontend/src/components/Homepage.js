@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import '../style/register.css';
 import ImageList from './ImageList';
 
+import Tag from './Tag';
+
 
 const Homepage = () => {
 
@@ -26,65 +28,20 @@ const Homepage = () => {
                         </div>
                         <div className='buttomsNav'>
                             <div className='registrationButton'>
-                                <Link to="/password" className='signUp'>Sign up</Link>
+
+                                <Link to="/Register" className='signUp'>Sign up</Link>
                             </div>
 
                             <div className='loginButton'>
-                                <Link to="/Register" className="signIn">Sign in</Link>
+                                <Link to="/Login" className="signIn">Sign in</Link>
                             </div>
                         </div>
 
                     </div>
 
                     <div className='categoryBar'>
-
-                        <div className='category'>
-                            Pieski
-                        </div>
-
-                        <div className='category'>
-                            Kotki
-                        </div>
-
-                        <div className='category'>
-                            Motoryzacja
-                        </div>
-
-                        <div className='category'>
-                            Zwierzątka
-                        </div>
-
-                        <div className='category'>
-                            Nauka
-                        </div>
-
-                        <div className='category'>
-                            Gierki
-                        </div>
-
-                        <div className='category'>
-                            Sport
-                        </div>
-
-                        <div className='category'>
-                            Bimbały
-                        </div>
-
-                        <div className='category'>
-                            Wellman
-                        </div>
-
-                        <div className='category'>
-                            Memuchy 
-                        </div>
-
-                        <div className='category'>
-                            Memuchy 
-                        </div>
-                        <div className='category'>
-                            Wellman
-                        </div>
-
+                        <Tag/>
+                        
 
                     </div>
                 </div>

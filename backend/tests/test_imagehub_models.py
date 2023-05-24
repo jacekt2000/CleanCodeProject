@@ -1,52 +1,37 @@
 import pytest
-from imagehub.models import Post, Comment, Subcomment, PostLike
-from users.models import Account
-
-
-@pytest.fixture
-def account() -> Account:
-    return Account.objects.create(email='abc@aaa.com', password='password')
-
-
-@pytest.fixture
-def post(account) -> Post:
-    return Post.objects.create(user_id=account, title="tytuł", description="opis", create_date='2023-10-10', image='ścieżka do brazka', tags=['tag1','tag2'])
-
-
-@pytest.fixture
-def comment(post, account) -> Comment:
-    return Comment.objects.create(post_id=post, user_id=account, comment_text="komentarz", create_date='2023-10-10')
-
-
-@pytest.fixture
-def subcomment(post, account, comment) -> Subcomment:
-    return Subcomment.objects.create(parrent_comment=comment, post_id=post, user_id=account, comment_text="komentarz2", create_date='2023-10-10')
-
-
-@pytest.fixture
-def like(post, account) -> PostLike:
-    return PostLike.objects.create(type=1, user_id=account, post_id=post)
 
 
 @pytest.mark.django_db
 def test_imagehub_model_post(post):
+    custom_title = "Ab c d"
+    post.title = custom_title
+
     print(post)
-    assert post.title == "tytuł"
+    assert post.title == custom_title
 
 
 @pytest.mark.django_db
 def test_imagehub_model_comment(comment):
+    custom_comment = "Jakiś komentarz"
+    comment.comment_text = custom_comment
+
     print(comment)
-    assert comment.comment_text == "komentarz"
+    assert comment.comment_text == custom_comment
 
 
 @pytest.mark.django_db
 def test_imagehub_model_subcomment(subcomment):
+    custom_subcomment = "Jakiś komentarz do komentarzaaaaa"
+    subcomment.comment_text = custom_subcomment
+
     print(subcomment)
-    assert subcomment.comment_text == "komentarz2"
+    assert subcomment.comment_text == custom_subcomment
 
 
 @pytest.mark.django_db
 def test_imagehub_model_post_like(like):
+    custom_like = 1
+    like.type = custom_like
+
     print(like)
-    assert like.type == 1
+    assert like.type == custom_like
