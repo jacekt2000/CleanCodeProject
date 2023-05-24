@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Header from '../../Header';
+import Header from '../Header';
 import { Link } from 'react-router-dom';
 import '../style/register.css';
-import Validation from '../../validation';
+import Validation from '../validation';
 
 const Register = () => {
   // const imageLogo = <img style={{ height:180}} src={require('../images/logo3.png')} alt="" />

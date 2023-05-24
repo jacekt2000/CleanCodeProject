@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Header from '../../../Header';
-import HeaderSmall from '../../../HeaderSmall';
+// import Header from '../Header';
+import HeaderSmall from '../HeaderSmall'
 import { Link } from 'react-router-dom';
-import '../style/register.css';
-import ImageList from '../../../ImageList';
-
+import '../../style/register.css';
+// import ImageList from '../ImageList'
+import ShowPosts from '../Posts/ShowPosts';
 
 const Homepage = () => {
 
@@ -90,7 +90,8 @@ const Homepage = () => {
             </div>
 
             <div className='photosSection'>
-                <ImageList />
+                <ShowPosts />
+                {/* <ImageList /> */}
                 {/* <div className='photo'>
                         
                         <div className='image'>

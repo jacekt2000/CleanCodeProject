@@ -1,6 +1,4 @@
-import Register from "./components/Pages/Auth/Register";
-import RecoverPassword from "./components/Pages/Auth/RecoverPassword";
-import Homepage from "./components/Pages/Auth/Home/Homepage";
+import Homepage from "./components/Home/Homepage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {

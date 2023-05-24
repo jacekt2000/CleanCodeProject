@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Header from "../../Header";
+import Header from "../Header";
 import axios from "axios";
+// import { URL } from "../Api/Api";
 
 const URL = "http://localhost:8000/api/token/";
 
