@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from './Header';
+import Header from '../../Header';
 import '../style/register.css';
 
 
@@ -11,10 +11,10 @@ const RecoverPassword = () => {
 
   return (
     <div className='container'>
-      <Header/>
+      <Header />
       <div className='register'>
         <form>
-            <p className='Recover'>Enter the email address associated with your Imagehub account. </p>
+          <p className='Recover'>Enter the email address associated with your Imagehub account. </p>
           <label id='login' className='registerForm'>
             <input type="text" name="login" className='registerForm' placeholder='email' />
           </label><br></br>
@@ -22,7 +22,7 @@ const RecoverPassword = () => {
 
         </form>
       </div>
-      
+
     </div>
   );
 };
