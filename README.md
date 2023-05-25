@@ -1,11 +1,13 @@
 # ImageHub - aplikacja do share'owania zdjęć
 
 ## Table of contents
-* [Nasz zespół](#Nasz zespół)
-* [Opis aplikacji](#general-info)
-* [Technologie](#technologies)
+* [Zespół](#nasz-zespół)
+* [Opis aplikacji](#opis-aplikacji)
+* [Technologie](#technologie)
 * [Setup](#setup)
-/
+
+***
+
 ## Nasz zespół:
 # Nazwa: Czysty Kod (Clean Code)
 
@@ -24,7 +26,7 @@ użytkownik może udostępnić innym treść posta przesyłając link do niego.
 Post użytkowników zalogowanych są wyświetlane na stronie głównej jest możliwość 
 ich komentowania i lajkowania.  
 	
-## Technologies
+## Technologie
 Project is created with:
 * Python (Django)
 * Java Script (React)
