@@ -1,11 +1,11 @@
 # ImageHub - aplikacja do share'owania zdjęć
 
 ## Table of contents
-* [Nasz zespół](#nazwa-zespołu)
+* [Nasz zespół](#Nasz zespół)
 * [Opis aplikacji](#general-info)
-* [Technologies](#technologies)
+* [Technologie](#technologies)
 * [Setup](#setup)
-
+/
 ## Nasz zespół:
 # Nazwa: Czysty Kod (Clean Code)
 
