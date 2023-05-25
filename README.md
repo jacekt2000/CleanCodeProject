@@ -8,10 +8,11 @@
 
 ***
 
-## Nasz zespół:
-### Nazwa: Czysty Kod (Clean Code)
+## Nasz zespół
+### Nazwa
+Czysty Kod (Clean Code)
 
-### Członkowie zespołu:
+### Członkowie zespołu
 1. Stanisław Olszak (StachuDev)
 2. Rafał Piotrowicz (0Rav0)
 3. Jacek Tarzanowski (jacekt2000)
@@ -51,7 +52,7 @@ $ venv\Scripts\activate
 $ pip install -r requirements.txt
 ```
 ***
-### Building Docker Images and Containers:
+### Tworzenie obrazów i kontenerów Dockerowych
 
 ```
 $ docker compose up
