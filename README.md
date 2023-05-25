@@ -9,9 +9,9 @@
 ***
 
 ## Nasz zespół:
-# Nazwa: Czysty Kod (Clean Code)
+### Nazwa: Czysty Kod (Clean Code)
 
-# Członkowie zespołu:
+### Członkowie zespołu:
 1. Stanisław Olszak (StachuDev)
 2. Rafał Piotrowicz (0Rav0)
 3. Jacek Tarzanowski (jacekt2000)
@@ -36,20 +36,20 @@ Project is created with:
 ## Setup
 To before run docker container install frontend and backend requirements:
 
-# Frontend
+### Frontend
 
 ```
 $ npm install
 ```
 
-# Backend
+### Backend
 
 ```
 $ venv\Scripts\activate 
 $ pip install -r requirements.txt
 ```
 ***
-# Building Docker Images and Containers:
+### Building Docker Images and Containers:
 
 ```
 $ docker compose up
