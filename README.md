@@ -20,11 +20,11 @@
 
 
 ## Opis aplikacji
-Jest to aplikacja wzorowana na Imgur'ze. Każdy użytkownik (zarówno zalogowany 
-jaki i niezalogowany) może dodać post ze zdjęciem i odpowiednim tagiem. Następnie 
-użytkownik może udostępnić innym treść posta przesyłając link do niego.
-Post użytkowników zalogowanych są wyświetlane na stronie głównej jest możliwość 
-ich komentowania i lajkowania.  
+Jest to aplikacja wzorowana na Imgur'ze. Każdy użytkownik (zalogowany i niezalogowany) 
+może dodać post ze zdjęciem i odpowiednim tagiem. Następnie 
+może udostępnić innym jego treaść przesyłając link. Posty użytkowników zalogowanych 
+są wyświetlane na stronie głównej, jest możliwość ich komentowania i lajkowania oraz 
+wyszukiwania po tagach.
 	
 ## Technologie
 Project is created with:
@@ -39,12 +39,14 @@ To before run docker container install frontend and backend requirements:
 ### Frontend
 
 ```
+$ cd .\frontend
 $ npm install
 ```
 
 ### Backend
 
 ```
+$ cd .\backend
 $ venv\Scripts\activate 
 $ pip install -r requirements.txt
 ```
