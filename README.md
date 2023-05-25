@@ -51,7 +51,7 @@ $ venv\Scripts\activate
 $ pip install -r requirements.txt
 ```
 ***
-### Tworzenie obrazów i kontenerów Dockerowych
+### Utworzenie obrazów i kontenerów Dockerowych
 
 ```
 $ docker compose up
