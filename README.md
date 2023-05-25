@@ -28,7 +28,6 @@ są wyświetlane na stronie głównej, jest możliwość ich komentowania i lajk
 wyszukiwania po tagach.
 	
 ## Technologie
-Project is created with:
 * Python (Django)
 * Java Script (React)
 * PostgreSQL
