@@ -3,7 +3,6 @@ from .models import Account
 from django.core.exceptions import ValidationError
 
 
-
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
