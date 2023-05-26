@@ -1,5 +1,5 @@
 from django.contrib import admin
-from imagehub.models import Tag, Post 
+from imagehub.models import *
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -12,3 +12,6 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Tag, PostAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comment)
+admin.site.register(Subcomment)
+admin.site.register(PostLike)

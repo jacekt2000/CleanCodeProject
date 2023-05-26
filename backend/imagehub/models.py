@@ -14,33 +14,33 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(Account, related_name='posts', on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=45)
     description = models.TextField()
     create_date = models.DateField(auto_now_add=True)
     image = models.ImageField(upload_to=upload_to, blank=True, null=True)
-    tags = models.ManyToManyField(Tag)
+    tag = models.ForeignKey(Tag, related_name='post_tag', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.title
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comment_post', on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, related_name='comment_user', on_delete=models.CASCADE)
     comment_text = models.TextField()
-    create_date = models.DateField()
+    create_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.comment_text
 
 
 class Subcomment(models.Model):
-    parrent_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    parrent_comment = models.ForeignKey(Comment, related_name='subcomment_parent', on_delete=models.CASCADE)
+    # post = models.ForeignKey(Post, related_name='subcomment_post', on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, related_name='subcomment_user', on_delete=models.CASCADE)
     comment_text = models.TextField()
-    create_date = models.DateField()
+    create_date = models.DateField(auto_now_add=True)
     
     def __str__(self):
         return self.comment_text
@@ -48,8 +48,8 @@ class Subcomment(models.Model):
 
 class PostLike(models.Model):
     type = models.BooleanField()
-    user = models.ForeignKey(Account, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, related_name='like_user' , on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='like_post', on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.type)
