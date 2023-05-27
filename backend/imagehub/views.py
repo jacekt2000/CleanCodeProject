@@ -102,7 +102,7 @@ def post_detail(request, pk):
     except Post.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
   
-    serializer = PostSerializer(post)
+    serializer = FullPostSerializer(post)
     return Response(serializer.data)
 
 
@@ -277,12 +277,26 @@ def postlike_list(request, post):
 def add_postlike(request, post):
     user = request.user.id
 
-    like = PostLike.objects.get(user=user, post=int(post))
-    
+    try:
+        like = PostLike.objects.get(user=user, post=int(post))
+    except:
+        like = None
+
     if like is not None:
         return Response(status=status.HTTP_208_ALREADY_REPORTED)
 
+    post_obj = Post.objects.get(id=int(post))
+
+
     request.data._mutable = True
+    like_type = request.data['type']
+    # return Response(like_type)
+    if like_type == "1": 
+        post_obj.like_count = post_obj.like_count + 1
+        post_obj.save()
+    elif like_type == "0": 
+        post_obj.dislike_count = post_obj.dislike_count + 1
+        post_obj.save()
     request.data['user'] = user
     request.data['post'] = int(post)
     request.data._mutable = False
