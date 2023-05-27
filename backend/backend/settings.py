@@ -44,18 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
 
+    # Third-party apps
     'rest_framework',
     'rest_framework_simplejwt',
     'django_rest_passwordreset',
-]
 
-INSTALLED_EXTENSIONS = [
+    # Local apps
     'imagehub',
     'users',
-
 ]
-
-INSTALLED_APPS += INSTALLED_EXTENSIONS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -109,18 +106,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 
@@ -153,23 +150,23 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=3),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
-    "ROTATE_REFRESH_TOKENS": False,
-    "BLACKLIST_AFTER_ROTATION": True,
-    "ALGORITHM": "HS256",
-    "SIGNING_KEY": settings.SECRET_KEY,
-    "AUDIENCE": None,
-    "ISSUER": None,
-    "AUTH_HEADER_TYPES": ("Bearer",),
-    "USER_ID_FIELD": "id",
-    "USER_ID_CLAIM": "user_id",
-    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
-    "TOKEN_TYPE_CLAIM": "token_type",
-    "JTI_CLAIM": "jti",
-    "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-    "SLIDING_TOKEN_LIFETIME": timedelta(days=3),
-    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=5),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    # "ALGORITHM": "HS256",
+    # "SIGNING_KEY": settings.SECRET_KEY,
+    # "AUDIENCE": None,
+    # "ISSUER": None,
+    # "AUTH_HEADER_TYPES": ("Bearer",),
+    # "USER_ID_FIELD": "id",
+    # "USER_ID_CLAIM": "user_id",
+    # "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    # "TOKEN_TYPE_CLAIM": "token_type",
+    # "JTI_CLAIM": "jti",
+    # "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
+    # "SLIDING_TOKEN_LIFETIME": timedelta(days=3),
+    # "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=5),
 }
 
 AUTH_USER_MODEL = 'users.Account'
@@ -185,3 +182,4 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'images')
 # URL used to access the media
 MEDIA_URL = '/'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

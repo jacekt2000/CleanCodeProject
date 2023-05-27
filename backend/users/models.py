@@ -1,4 +1,4 @@
-from django.contrib.auth.models import PermissionsMixin, AbstractBaseUser
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from .manager import AccountManager
 from django.dispatch import receiver
@@ -7,22 +7,20 @@ from django_rest_passwordreset.signals import reset_password_token_created
 from django.core.mail import send_mail
 
 
-class Account(AbstractBaseUser, PermissionsMixin):
+class Account(AbstractUser):
     username = models.CharField(unique=True, max_length=255)
     email = models.EmailField(unique=True)
-    born_date = models.DateField(null=True, blank=True)
-    first_name = models.CharField(max_length=255, null=True)
-    last_name = models.CharField(max_length=255, null=True)
-    is_active = models.BooleanField(default=True, editable=False)
+    born_date = models.DateField(blank=True)
+    first_name = models.CharField(max_length=255, blank=True)
+    last_name = models.CharField(max_length=255, blank=True)
+    is_active = models.BooleanField(default=True)
+    password = models.CharField(max_length=255)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
-
-    objects = AccountManager()
-
-    @property
-    def is_staff(self):
-        return self.is_superuser
+    REQUIRED_FIELDS = ["username"]
+    
+    def __str__(self):
+        return self.username
 
 
 @receiver(reset_password_token_created)

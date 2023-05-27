@@ -10,6 +10,8 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    tag = serializers.SlugRelatedField(queryset=Tag.objects.all(), slug_field='tag')
+
     class Meta:
         model = Post
         fields = '__all__'

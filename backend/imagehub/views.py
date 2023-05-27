@@ -4,26 +4,15 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework.decorators import api_view, permission_classes, parser_classes
-from rest_framework_simplejwt.authentication import JWTAuthentication 
 from rest_framework.parsers import MultiPartParser, FormParser
 
 from .models import *
 from .models import Account
-from .serializers import *
-
-
-def get_user(request):
-    try:
-        token = request.META.get('HTTP_AUTHORIZATION').replace("Bearer ", "")
-        access_token = AccessToken(token)
-        return access_token['user_id']
-    except:
-        return None
-    
+from .serializers import *   
 
 
 
-# --- tag ---
+# --- tag --- 
 
 @api_view(['GET', 'POST'])
 def tag_list(request):
@@ -75,15 +64,13 @@ def tag_detail(request, pk, format=None):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+
 # --- post ---
 
 @api_view(['GET', 'POST'])
 # @parser_classes([MultiPartParser, FormParser])
 def post_list(request):
-    try:
-        user = get_user(request)
-    except:
-        user = null
+    user = request.user.id
 
     if request.method == 'GET':
         post = Post.objects.all()
@@ -91,6 +78,11 @@ def post_list(request):
         return Response(serializer.data)
     
     elif request.method == 'POST':
+        try:
+            tag = Tag.objects.get(tag=request.data['tag'])
+        except:
+            Tag.objects.create(tag=request.data['tag'])
+
         request.data._mutable = True
         request.data['user'] = user
         request.data._mutable = False
@@ -104,8 +96,7 @@ def post_list(request):
 
 
 @api_view(['GET'])
-# @parser_classes([MultiPartParser, FormParser])
-def post_detail(request, pk, format=None):
+def post_detail(request, pk):
     try:
         post = Post.objects.get(pk=pk)
     except Post.DoesNotExist:
@@ -119,11 +110,7 @@ def post_detail(request, pk, format=None):
 @permission_classes([IsAuthenticated])
 # @parser_classes([MultiPartParser, FormParser])
 def edit_post(request, pk, format=None):
-
-    try:
-        user = get_user(request)
-    except:
-        user = null
+    user = request.user.id
 
     try:
         post = Post.objects.get(pk=pk, user=user)
@@ -135,6 +122,11 @@ def edit_post(request, pk, format=None):
         return Response(serializer.data)
   
     elif request.method == 'PUT':
+        try:
+            tag = Tag.objects.get(tag=request.data['tag'])
+        except:
+            Tag.objects.create(tag=request.data['tag'])
+
         serializer = PostSerializer(post, data=request.data)
   
         if serializer.is_valid():
@@ -143,6 +135,11 @@ def edit_post(request, pk, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'PATCH':
+        try:
+            tag = Tag.objects.get(tag=request.data['tag'])
+        except:
+            Tag.objects.create(tag=request.data['tag'])
+
         serializer = PostSerializer(post, data=request.data, partial=True)
   
         if serializer.is_valid():
@@ -168,11 +165,7 @@ def comment_list(request, post):
 @api_view(['POST'])    
 @permission_classes([IsAuthenticated])
 def add_comment(request, post):
-    
-    try:
-        user = get_user(request)
-    except:
-        user = null
+    user = request.user.id
 
     request.data._mutable = True
     request.data['user'] = user
@@ -190,11 +183,7 @@ def add_comment(request, post):
 @api_view(['GET', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def comment_detail(request, post, pk, format=None):
-
-    try:
-        user = get_user(request)
-    except:
-        user = null
+    user = request.user.id
 
     try:
         comment = Comment.objects.get(pk=pk, post=post, user=user)
@@ -231,11 +220,7 @@ def subcomment_list(request, comment):
 @api_view(['POST'])    
 @permission_classes([IsAuthenticated])
 def add_subcomment(request, comment):
-    
-    try:
-        user = get_user(request)
-    except:
-        user = null
+    user = request.user.id
 
     request.data._mutable = True
     request.data['user'] = user
@@ -253,11 +238,7 @@ def add_subcomment(request, comment):
 @api_view(['GET', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def subcomment_detail(request, comment, pk, format=None):
-
-    try:
-        user = get_user(request)
-    except:
-        user = null
+    user = request.user.id
 
     try:
         subcomment = Subcomment.objects.get(pk=pk, parrent_comment=comment, user=user)
@@ -294,11 +275,7 @@ def postlike_list(request, post):
 @api_view(['POST'])    
 @permission_classes([IsAuthenticated])
 def add_postlike(request, post):
-    
-    try:
-        user = get_user(request)
-    except:
-        user = null
+    user = request.user.id
 
     like = PostLike.objects.get(user=user, post=int(post))
     
@@ -322,11 +299,7 @@ def add_postlike(request, post):
 @api_view(['GET', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def postlike_detail(request, post, pk, format=None):
-
-    try:
-        user = get_user(request)
-    except:
-        user = null
+    user = request.user.id
 
     try:
         postlike = PostLike.objects.get(pk=pk, post=post, user=user)
