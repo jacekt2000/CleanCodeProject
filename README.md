@@ -9,8 +9,7 @@
 ***
 
 ## Nasz zespół
-### Nazwa
-Czysty Kod (Clean Code)
+### Nazwa: Czysty Kod (Clean Code)
 
 ### Członkowie zespołu
 1. Stanisław Olszak (StachuDev)
