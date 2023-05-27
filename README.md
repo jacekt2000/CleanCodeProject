@@ -56,5 +56,5 @@ $ pip install -r requirements.txt
 ```
 $ docker compose up
 ```
-### Teraz można się pomodlitć
+### Teraz można się pomodlić
 aby docker nie wywalił błędów (to graniczy z cudem)
