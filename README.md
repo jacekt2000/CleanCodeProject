@@ -1,6 +1,6 @@
 # ImageHub - aplikacja do share'owania zdjęć
 
-## Table of contents
+## Spis treści
 * [Zespół](#nasz-zespół)
 * [Opis aplikacji](#opis-aplikacji)
 * [Technologie](#technologie)
@@ -33,8 +33,8 @@ wyszukiwania po tagach.
 * PostgreSQL
 * Docker
 	
-## Setup
-To before run docker container install frontend and backend requirements:
+## Uruchomienie
+Przed uruchomieniem dokera dobrze zainstalować lokalnie frontendowe i backendowe requirements:
 
 ### Frontend
 
@@ -44,7 +44,7 @@ $ npm install
 ```
 
 ### Backend
-
+(po utworzeniu venv'a)
 ```
 $ cd .\backend
 $ venv\Scripts\activate 
@@ -57,4 +57,4 @@ $ pip install -r requirements.txt
 $ docker compose up
 ```
 ### Teraz można się pomodlić
-aby docker nie wywalił błędów (to graniczy z cudem)
+Aby docker nie wywalił błędów (to graniczy z cudem)
