@@ -51,8 +51,10 @@ $ venv\Scripts\activate
 $ pip install -r requirements.txt
 ```
 ***
-### Utworzenie obrazów i kontenerów Dockerowych
+### Tworzenie obrazów i kontenerów Dockerowych
 
 ```
 $ docker compose up
 ```
+### Teraz można się pomodlitć
+aby docker nie wywalił błędów (to graniczy z cudem)
