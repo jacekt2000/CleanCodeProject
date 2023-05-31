@@ -1,39 +1,55 @@
 import pytest
-from imagehub.models import Post, Comment, Subcomment, PostLike
+from imagehub.models import Tag, Post, Comment, Subcomment, PostLike
 from users.models import Account
+from rest_framework.test import APIClient
+
+
+@pytest.fixture
+def api_client():
+    client = APIClient()
+    return client
 
 
 #users fixtures
 @pytest.fixture
-def account_user() -> Account:
-    return Account.objects.create(username="john", email="john@gmail.com", password="password", first_name="John", last_name="Doe")
-
-@pytest.fixture
-def account_superuser() -> Account:
-    return Account.objects.create(username="john", email="john@gmail.com", password="password", first_name="John", last_name="Doe", is_superuser=True)
-
-@pytest.fixture
 def account() -> Account:
-    return Account.objects.create(email='abc@aaa.com', password='password')
+    return Account.objects.create(username="ABC", email='abc@aaa.com', password='password')
 
 
 
 #imagehub textures
+
 @pytest.fixture
-def post(account) -> Post:
-    return Post.objects.create(user_id=account, title="tytuł", description="opis", create_date='2023-10-10', image='ścieżka do brazka', tags=['tag1','tag2'])
+def tag() -> Tag:
+    return Tag.objects.create(tag="tag")
+
+@pytest.fixture
+def post(account, tag) -> Post:
+    return Post.objects.create(user=account, title="tytuł", description="opis", create_date='2023-10-10', image='ścieżka do brazka', tag=tag)
 
 
 @pytest.fixture
 def comment(post, account) -> Comment:
-    return Comment.objects.create(post_id=post, user_id=account, comment_text="komentarz", create_date='2023-10-10')
+    return Comment.objects.create(post=post, user=account, comment_text="komentarz", create_date='2023-10-10')
 
 
 @pytest.fixture
 def subcomment(post, account, comment) -> Subcomment:
-    return Subcomment.objects.create(parrent_comment=comment, post_id=post, user_id=account, comment_text="komentarz2", create_date='2023-10-10')
+    return Subcomment.objects.create(parrent_comment=comment, user=account, comment_text="komentarz2", create_date='2023-10-10')
 
 
 @pytest.fixture
 def like(post, account) -> PostLike:
-    return PostLike.objects.create(type=1, user_id=account, post_id=post)
+    return PostLike.objects.create(type=1, user=account, post=post)
+
+
+@pytest.fixture
+def post_payload():
+    payload = {
+        'title': 'Lewis Hamilton',
+        'user': 1,
+        'description': 'Desc...',
+        'tag': 1,
+        'image': ''
+    }
+    return payload

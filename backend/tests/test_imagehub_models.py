@@ -2,6 +2,15 @@ import pytest
 
 
 @pytest.mark.django_db
+def test_imagehub_model_tag(tag):
+    custom_tag = "tag"
+    tag.tag = custom_tag
+
+    print(tag)
+    assert tag.tag == custom_tag
+
+
+@pytest.mark.django_db
 def test_imagehub_model_post(post):
     custom_title = "Ab c d"
     post.title = custom_title
