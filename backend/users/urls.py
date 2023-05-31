@@ -1,11 +1,9 @@
-from rest_framework.routers import DefaultRouter
-from .views import UserRegistrationViewSet
-
-from django.contrib import admin
-from django.urls import path , include
-router = DefaultRouter()
-
-router.register("registration", UserRegistrationViewSet, basename="registration")
+from users import views
+from django.urls import path, include
 
 
-app_urls =  router.urls
+urlpatterns = [
+    path('registration/', views.register_user, name='registration'),
+    path('account/', views.account_detail, name='account-detail'),
+    path('change_password/', views.ChangePasswordView.as_view(), name='change-password'),
+]

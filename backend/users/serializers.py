@@ -3,8 +3,7 @@ from .models import Account
 from django.core.exceptions import ValidationError
 
 
-
-class AccountSerializer(serializers.ModelSerializer):
+class AccountCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = ['id', 'username', 'email', 'password']
@@ -24,3 +23,24 @@ class AccountSerializer(serializers.ModelSerializer):
 
         return instance
 
+
+class AccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'born_date')
+
+    def update(self, instance, validated_data):
+        instance.username = validated_data.get('username', instance.username)
+        instance.email = validated_data.get('email', instance.email)
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.born_date = validated_data.get('born_date', instance.born_date)
+
+        instance.save()
+
+        return instance
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
