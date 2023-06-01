@@ -78,6 +78,8 @@ button {
   /* border: 1.5px solid green; */
   border: 1.5px solid #f7971d;
   max-width: 100px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 button:hover {
@@ -244,8 +246,6 @@ a:active {
 
 .registrationButton {
   display: inline-block;
-
-
 }
 
 .loginButton {
