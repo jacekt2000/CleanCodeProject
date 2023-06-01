@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
 import axios from "axios";
 // import { URL } from "../Api/Api";
 
 const URL = "http://localhost:8000/api/token/";
 
-const Data = {
-    email: "stasiol.olszak@gmail.com",
-    password: "StanislawOlszak",
-};
+// const Data = {
+//     email: "stasiol.olszak@gmail.com",
+//     password: "StanislawOlszak",
+// };
 
-function SetTokenToLocal({ token }) {
+// function SetTokenToLocal({ token }) {
 
-}
+// }
 
 
 export default function Login() {
-
+    const navigate = useNavigate()
+    // const [token, set]
     const [response, setResponse] = useState("");
     const [credentials, setCredentials] = useState({
         email: "",
@@ -36,14 +37,23 @@ export default function Login() {
             setResponse(response.data.access);
         })
             .catch((err) => console.log(err));
+
     }
 
     useEffect(() => {
         // console.log("hurra!: " + typeof response);
         if (response) {
             localStorage.setItem('accessToken', response);
+            navigate('/');
         }
     }, [response]);
+
+    // useEffect(() => {
+    //     // console.log("hurra!: " + typeof response);
+    //     if (localStorage.getItem('accessToken')) {
+
+    //     }
+    // }, [response]);
 
     function onChange(event) {
         const { name, value } = event.target;
