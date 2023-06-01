@@ -9,7 +9,11 @@ from django.core.mail import send_mail
 class Account(AbstractUser):
     username = models.CharField(unique=True, max_length=255)
     email = models.EmailField(unique=True)
+<<<<<<< Updated upstream
     born_date = models.DateField(null=True, blank=True)
+=======
+    born_date = models.DateField(blank=True, null=True)
+>>>>>>> Stashed changes
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
     is_active = models.BooleanField(default=True)
