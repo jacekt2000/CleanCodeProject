@@ -10,7 +10,7 @@ export default function UploadPost() {
         title: '',
         description: '',
         image: null,
-        tags: [1]
+        tag: ''
     });
 
     const handleChange = (e) => {
@@ -21,7 +21,7 @@ export default function UploadPost() {
 
     const handleImageChange = (e) => {
         setData({
-            image: e.target.files[0]
+            [image]: e.target.files[0]
         })
     };
 
@@ -34,7 +34,7 @@ export default function UploadPost() {
         form_data.append('title', data.title);
         form_data.append('description', data.content);
         form_data.append('image', data.image, data.image.name);
-        form_data.append('tags', [1]);
+        form_data.append('tag', data.tag);
 
         let url = 'http://localhost:8000/api/posts/';
         axios.post(url, form_data, {
@@ -71,6 +71,8 @@ export default function UploadPost() {
                             accept="image/png, image/jpeg, image/gif" className='uploadInput' onChange={handleImageChange} required />
 
                     </p>
+
+                    <input type="text" placeholder='Tag' id='tag' className='uploadInput' value={data.tag} onChange={handleChange} required />
 
                     <input type="submit" className='uploadSubmit' />
                 </form>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import HeaderSmall from '../HeaderSmall'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../style/register.css';
 import Tag from '../Tag';
 import CardList from './CardList';
@@ -8,7 +8,7 @@ import CardList from './CardList';
 
 
 const Homepage = () => {
-
+    const navigate = useNavigate();
 
     return (
 
@@ -25,9 +25,11 @@ const Homepage = () => {
                         </div>
                     </div>
                     <div className='buttomsNav'>
+                        <button onClick={() => navigate('add-post')}>Add Post</button>
                         <div className='registrationButton'>
                             <Link to="/register" className='signUp'>Sign up</Link>
                         </div>
+
 
                         <div className='loginButton'>
                             <Link to="/login" className="signIn">Sign in</Link>
