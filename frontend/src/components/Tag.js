@@ -20,7 +20,7 @@ function Tag() {
     <div>
 
       {tags.map(tag => (
-        <div className='category'> {tag.tag}</div>
+        <div className='category' key={tag.tag}> {tag.tag}</div>
       ))}
 
     </div>

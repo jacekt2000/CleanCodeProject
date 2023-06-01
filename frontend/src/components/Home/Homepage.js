@@ -3,7 +3,8 @@ import HeaderSmall from '../HeaderSmall'
 import { Link } from 'react-router-dom';
 import '../../style/register.css';
 import Tag from '../Tag';
-import ImageList from '../ImageList'
+import CardList from './CardList';
+// import ImageList from '../ImageList'
 
 
 const Homepage = () => {
@@ -13,10 +14,9 @@ const Homepage = () => {
 
         <div className='homepage'>
             <div className='header'>
-                <div className='navBar'>
-                    <div className='logoSmall'>
-                        <HeaderSmall />
-                    </div>
+
+                <nav className='navBar'>
+                    <HeaderSmall className='logoSmall' key={"header"} />
 
                     <div className='searchLine'>
                         <div className='searchButton'>
@@ -34,120 +34,13 @@ const Homepage = () => {
                         </div>
                     </div>
 
-                </div>
-                <Tag />
+                </nav>
+                <Tag key={"tag"} />
 
 
             </div>
 
-            <ImageList />
-
-            <div className='photosSection'>
-                {/* <ShowPosts /> */}
-                {/* <ImageList /> */}
-                {/* <div className='photo'>
-                        
-                        <div className='image'>
-                        <img  src={require('../images/testowe/2.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                            opis zdjęcia<br/>like i komentarze
-                            <img  src={require('../images/testowe/like.png')} alt="" />
-                        </div>
-                    </div>
-
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/2.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/2.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/2.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/2.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/1.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/1.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/1.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/1.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/1.gif')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/1.jpg')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div>
-                    <div className='photo'>
-                        <div className='image'>
-                        <img  src={require('../images/testowe/2.jpg')} alt="" />
-                        </div>
-                        <div className='photoDescription'>
-                        opis zdjęcia<br/>like i komentarze
-                        </div>
-                    </div> */}
-
-
-            </div>
+            <CardList />
 
         </div>
     )
