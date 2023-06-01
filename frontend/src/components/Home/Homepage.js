@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-// import Header from '../Header';
 import HeaderSmall from '../HeaderSmall'
 import { Link } from 'react-router-dom';
 import '../../style/register.css';
-// import ImageList from '../ImageList'
-// import Show
+import Tag from '../Tag';
+import ImageList from '../ImageList'
+
 
 const Homepage = () => {
 
@@ -19,75 +19,28 @@ const Homepage = () => {
                     </div>
 
                     <div className='searchLine'>
-                        <form><input className='search' type='text' ></input></form>
                         <div className='searchButton'>
+                            <input className='search' type='text' ></input>
                             <button type="submit" className='searchForm'>Search</button>
                         </div>
                     </div>
                     <div className='buttomsNav'>
                         <div className='registrationButton'>
-                            <Link to="/password" className='signUp'>Sign up</Link>
+                            <Link to="/register" className='signUp'>Sign up</Link>
                         </div>
 
                         <div className='loginButton'>
-                            <Link to="/Register" className="signIn">Sign in</Link>
+                            <Link to="/login" className="signIn">Sign in</Link>
                         </div>
                     </div>
 
                 </div>
-
-                <div className='categoryBar'>
-
-                    <div className='category'>
-                        Pieski
-                    </div>
-
-                    <div className='category'>
-                        Kotki
-                    </div>
-
-                    <div className='category'>
-                        Motoryzacja
-                    </div>
-
-                    <div className='category'>
-                        Zwierzątka
-                    </div>
-
-                    <div className='category'>
-                        Nauka
-                    </div>
-
-                    <div className='category'>
-                        Gierki
-                    </div>
-
-                    <div className='category'>
-                        Sport
-                    </div>
-
-                    <div className='category'>
-                        Bimbały
-                    </div>
-
-                    <div className='category'>
-                        Wellman
-                    </div>
-
-                    <div className='category'>
-                        Memuchy
-                    </div>
-
-                    <div className='category'>
-                        Memuchy
-                    </div>
-                    <div className='category'>
-                        Wellman
-                    </div>
+                <Tag />
 
 
-                </div>
             </div>
+
+            <ImageList />
 
             <div className='photosSection'>
                 {/* <ShowPosts /> */}
