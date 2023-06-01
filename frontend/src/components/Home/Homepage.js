@@ -4,7 +4,7 @@ import HeaderSmall from '../HeaderSmall'
 import { Link } from 'react-router-dom';
 import '../../style/register.css';
 // import ImageList from '../ImageList'
-import ShowPosts from '../Posts/ShowPosts';
+// import Show
 
 const Homepage = () => {
 
@@ -90,7 +90,7 @@ const Homepage = () => {
             </div>
 
             <div className='photosSection'>
-                <ShowPosts />
+                {/* <ShowPosts /> */}
                 {/* <ImageList /> */}
                 {/* <div className='photo'>
                         

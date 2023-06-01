@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from '../../Header';
-import '../style/register.css';
+import Header from '../Header';
+import '../../style/register.css'
 
 
 const RecoverPassword = () => {

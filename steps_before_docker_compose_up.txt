@@ -15,5 +15,7 @@ jest to nasza baza danych
 UWAGA! po pierwszym uruchomieniu "docker-compose up" powinien pojawić się błąd połączenia z bazą,
 dlatego gdy trzy obrazy zostaną już utworzone przerwij uruchamianie tych obrazów:  "CTRL + C"
 
+python manage.py loaddata fixtures/*
+
 wpisz ponownie: docker-compose up
 
