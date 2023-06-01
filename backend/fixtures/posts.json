@@ -1,0 +1,50 @@
+[
+    {
+        "model": "imagehub.post",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "title": "kerimt król",
+            "description": "desc2ads",
+            "create_date": "2023-05-16",
+            "image": "images/kermit-gd8dd1b747_640.jpg",
+            "tag": 2
+        }
+    },
+    {
+        "model": "imagehub.post",
+        "pk": 3,
+        "fields": {
+            "user": null,
+            "title": "post3",
+            "description": "desc3",
+            "create_date": "2023-05-16",
+            "image": "images/trout-g3411df3b3_640.jpg",
+            "tag": 2
+        }
+    },
+    {
+        "model": "imagehub.post",
+        "pk": 4,
+        "fields": {
+            "user": 1,
+            "title": "post4",
+            "description": "desc4",
+            "create_date": "2023-05-16",
+            "image": "images/everest-g61cb06e6c_640.png",
+            "tag": 1
+        }
+    },
+    {
+        "model": "imagehub.post",
+        "pk": 5,
+        "fields": {
+            "user": null,
+            "title": "post5",
+            "description": "desc5",
+            "create_date": "2023-05-11",
+            "image": "images/goku-g75ed774fb_640.png",
+            "tag": 1
+        }
+    }
+]

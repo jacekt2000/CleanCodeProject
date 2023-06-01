@@ -1,0 +1,23 @@
+[
+	{
+		"model": "imagehub.tag",
+		"pk": 1,
+		"fields": {
+			"tag": "programistyczny"
+		}
+	},
+	{
+		"model": "imagehub.tag",
+		"pk": 2,
+		"fields": {
+			"tag": "smieszne"
+		}
+	},
+	{
+		"model": "imagehub.tag",
+		"pk": 3,
+		"fields": {
+			"tag": "powaga"
+		}
+	}
+]
