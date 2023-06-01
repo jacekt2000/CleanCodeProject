@@ -25,7 +25,7 @@ const Homepage = () => {
                         </div>
                     </div>
                     <div className='buttomsNav'>
-                        <button onClick={() => navigate('add-post')}>Add Post</button>
+                        <button onClick={() => navigate('/add-post')}>Add Post</button>
                         <div className='registrationButton'>
                             <Link to="/register" className='signUp'>Sign up</Link>
                         </div>
