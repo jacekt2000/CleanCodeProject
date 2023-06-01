@@ -71,6 +71,7 @@ def tag_detail(request, pk, format=None):
 # @parser_classes([MultiPartParser, FormParser])
 def post_list(request):
     user = request.user.id
+    data = request.data
 
     if request.method == 'GET':
         post = Post.objects.all()
@@ -83,11 +84,10 @@ def post_list(request):
         except:
             Tag.objects.create(tag=request.data['tag'])
 
-        request.data._mutable = True
-        request.data['user'] = user
-        request.data._mutable = False
+        data = data.copy()
+        data['user'] = user
 
-        serializer = PostSerializer(data=request.data)
+        serializer = PostSerializer(data=data)
 
         if serializer.is_valid():
             serializer.save()
@@ -135,10 +135,11 @@ def edit_post(request, pk, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'PATCH':
-        try:
-            tag = Tag.objects.get(tag=request.data['tag'])
-        except:
-            Tag.objects.create(tag=request.data['tag'])
+        if request.data.get('tag') is not None:
+            try:
+                tag = Tag.objects.get(tag=request.data['tag'])
+            except:
+                Tag.objects.create(tag=request.data['tag'])
 
         serializer = PostSerializer(post, data=request.data, partial=True)
   
@@ -166,13 +167,13 @@ def comment_list(request, post):
 @permission_classes([IsAuthenticated])
 def add_comment(request, post):
     user = request.user.id
+    data = request.data
 
-    request.data._mutable = True
-    request.data['user'] = user
-    request.data['post'] = int(post)
-    request.data._mutable = False
+    data = data.copy()
+    data['user'] = user
+    data['post'] = int(post)
 
-    serializer = CommentSerializer(data=request.data)
+    serializer = CommentSerializer(data=data)
 
     if serializer.is_valid():
         serializer.save()
@@ -221,13 +222,13 @@ def subcomment_list(request, comment):
 @permission_classes([IsAuthenticated])
 def add_subcomment(request, comment):
     user = request.user.id
+    data = request.data
+    
+    data = data.copy()
+    data['user'] = user
+    data['parrent_comment'] = int(comment)
 
-    request.data._mutable = True
-    request.data['user'] = user
-    request.data['parrent_comment'] = int(comment)
-    request.data._mutable = False
-
-    serializer = SubcommentSerializer(data=request.data)
+    serializer = SubcommentSerializer(data=data)
 
     if serializer.is_valid():
         serializer.save()
@@ -276,6 +277,7 @@ def postlike_list(request, post):
 @permission_classes([IsAuthenticated])
 def add_postlike(request, post):
     user = request.user.id
+    data = request.data
 
     try:
         like = PostLike.objects.get(user=user, post=int(post))
@@ -287,9 +289,9 @@ def add_postlike(request, post):
 
     post_obj = Post.objects.get(id=int(post))
 
-
-    request.data._mutable = True
-    like_type = request.data['type']
+    
+    data = data.copy()
+    like_type = request.data.get('type')
     # return Response(like_type)
     if like_type == "1": 
         post_obj.like_count = post_obj.like_count + 1
@@ -297,12 +299,11 @@ def add_postlike(request, post):
     elif like_type == "0": 
         post_obj.dislike_count = post_obj.dislike_count + 1
         post_obj.save()
-    request.data['user'] = user
-    request.data['post'] = int(post)
-    request.data._mutable = False
+    data['user'] = user
+    data['post'] = int(post)
 
 
-    serializer = PostLikeSerializer(data=request.data)
+    serializer = PostLikeSerializer(data=data)
 
     if serializer.is_valid():
         serializer.save()
